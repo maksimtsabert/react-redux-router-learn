@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import { SignupSchema } from '../../utils/validation-rules'
+import { Schema } from '../../utils/validation-rules'
 import { defaultConfig } from '../../utils/form-config'
 import { FormInput } from './form-input'
 import PropTypes from 'prop-types'
@@ -16,7 +16,7 @@ export const DefaultForm = ({ callBack, userDetails, show = true }) => {
     return (
         <Formik
             initialValues={{ ...config }}
-            validationSchema={SignupSchema}
+            validationSchema={Schema}
             onSubmit={(values, { resetForm }) => {
                 callBack(values)
                 resetForm()

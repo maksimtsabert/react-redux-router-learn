@@ -2,7 +2,7 @@ import * as Yup from 'yup'
 
 const phoneRegex = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
 
-export const SignupSchema = Yup.object().shape({
+export const Schema = Yup.object().shape({
     name: Yup.string()
         .min(2, 'Name Too Short!')
         .max(50, 'Name Too Long!')
