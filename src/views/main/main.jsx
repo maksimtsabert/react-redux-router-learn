@@ -40,7 +40,7 @@ export const MainComponent = ({ users, loadUsers, addUSer }) => {
         <Button onClick={showUserForm} text="Add user" disabled={disabled} />
         <DefaultForm callBack={handleClick} show={showForm} />
         <div className="users-list">
-            {filteredUsers().map((user, index) => (
+            {filteredUsers.map((user, index) => (
                 <UserCard user={user} key={index} />
             ))}
         </div>
