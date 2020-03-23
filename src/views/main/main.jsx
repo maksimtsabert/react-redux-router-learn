@@ -16,9 +16,7 @@ export const MainComponent = ({ users, loadUsers, addUSer }) => {
     }, [loadUsers])
 
 
-    const filteredUsers = () => {
-        return users.filter(user => user.name.toLowerCase().includes(filterRule))
-    }
+    const filteredUsers = users.filter(user => user.name.toLowerCase().includes(filterRule))
 
     const handleClick = values => {
         const userData = { id: Math.floor(Math.random() * Math.floor(100)), ...values } //random id
