@@ -1,0 +1,1 @@
+export { BlockWithIcon } from './block-with-icon'
