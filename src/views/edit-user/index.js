@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { thunkFecthUsersData } from '../main/thunk/index'
-import { updateUser } from '../../store/actions/user/user-actions'
+import { updateUser } from '../../store/actions/user-actions'
 import { EditUserComponent } from './edit-user'
 
 const mapStateToProps = (store, ownProps) => {

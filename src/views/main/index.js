@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { thunkFecthUsersData } from './thunk/index'
 import { MainComponent } from './main'
-import { addUSer } from '../../store/actions/user/user-actions'
+import { addUSer } from '../../store/actions/user-actions'
 import { filteredUsers } from '../../store/selectors'
 import { setSearchQuery } from '../../store/reducers/search-reducer'
 

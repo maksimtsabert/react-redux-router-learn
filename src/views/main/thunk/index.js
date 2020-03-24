@@ -1,4 +1,4 @@
-import { loadUsers } from '../../../store/actions/user/user-actions'
+import { loadUsers } from '../../../store/actions/user-actions'
 import { fetchUsersData } from '../../../api/index'
 
 export function thunkFecthUsersData() {

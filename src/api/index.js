@@ -1,4 +1,4 @@
-import { showSpinner } from '../store/actions/spinner/spinner-actions'
+import { showSpinner } from '../store/actions/spinner-actions'
 
 export const fetchUsersData = () => dispatch => {
     dispatch(showSpinner(true))

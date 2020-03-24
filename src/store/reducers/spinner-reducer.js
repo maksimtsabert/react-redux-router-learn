@@ -1,4 +1,4 @@
-import { SHOW_SPINNER } from '../../actions/spinner/spinner-actions'
+import { SHOW_SPINNER } from '../actions/spinner-actions'
 
 export function spinnerReducer(state = false, action) {
     switch (action.type) {

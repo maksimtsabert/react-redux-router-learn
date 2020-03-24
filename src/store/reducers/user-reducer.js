@@ -1,4 +1,4 @@
-import { LOAD_USERS, UPDATE_USER_DETAILS, ADD_USER } from '../../actions/user/user-actions'
+import { LOAD_USERS, UPDATE_USER_DETAILS, ADD_USER } from '../actions/user-actions'
 
 export function usersReducer(state = [], action) {
     switch (action.type) {
