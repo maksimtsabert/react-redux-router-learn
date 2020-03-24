@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 import { DefaultForm } from '../../components/form'
 import { UserMainInfo } from '../../components/user-main-info'
 import { Avatar } from '../../components/avatart'
+import PropTypes from 'prop-types'
 import './index.css'
 
 export const EditUserComponent = ({ user, loadUser, updateUser }) => {
-
     useEffect(() => {
         !user.length && loadUser()
         //eslint-disable-next-line
     }, [loadUser])
 
-    const handleCkick = values => {
+    const formCallback = values => {
         const userData = { id: user.id, ...values }
         updateUser(userData)
     }
@@ -24,6 +24,12 @@ export const EditUserComponent = ({ user, loadUser, updateUser }) => {
             </Avatar>
             <UserMainInfo user={user} />
         </div>
-        <DefaultForm callBack={handleCkick} userDetails={user} />
+        <DefaultForm callBack={formCallback} userDetails={user} />
     </div>)
+}
+
+EditUserComponent.propTypes = {
+    user: PropTypes.object,
+    loadUser: PropTypes.func,
+    updateUser: PropTypes.func
 }

@@ -3,11 +3,12 @@ import { BlockWithIcon } from '../../components/block-with-icon'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Avatar } from '../../components/avatart'
+import PropTypes from 'prop-types'
 import './index.css'
 
 export const UserDetailsComponent = ({ user, loadUser }) => {
     useEffect(() => {
-        !user.length && loadUser()
+        !Object.keys(user).length && loadUser()
         // eslint-disable-next-line
     }, [loadUser])
 
@@ -37,3 +38,8 @@ export const UserDetailsComponent = ({ user, loadUser }) => {
 
 //just for test
 const UserBlockWrapper = styled.div`border-top: 1px solid #9E9E9E;`
+
+UserDetailsComponent.propTypes = {
+    user: PropTypes.object,
+    loadUser: PropTypes.func,
+}
