@@ -6,23 +6,31 @@ import { Button } from '../../components/button'
 import PropTypes from 'prop-types'
 
 const getNextId = () => Math.floor(Math.random() * Math.floor(100))
-const setIdMapper = props => ({ id: getNextId(), ...props })
+const setIdMapper = values => ({ id: getNextId(), ...values })
 
 export const MainComponent = ({ users, loadUsers, setSearchQuery, addUSer }) => {
     const [showForm, setShowForm] = useState(false)
 
-    // eslint-disable-next-line
-    useEffect(() => loadUsers(), [])
+    useEffect(() => {
+        !users.length && loadUsers()
+        // eslint-disable-next-line
+    }, [loadUsers])
+
+    const formCallBack = (values) => {
+        addUSer(setIdMapper(values))
+        setShowForm(false)
+    }
 
     return (<div className="main-wrapper">
         <SearchInput
             callBack={({ target: { value } }) => setSearchQuery(value)}
             title='Search users' />
         <Button
-            onClick={() => setShowForm(!showForm)}
-            text="Add user" />
+            onClick={() => setShowForm(true)}
+            text="Add user"
+            disabled={showForm} />
         <DefaultForm
-            callBack={values => addUSer(setIdMapper(values))}
+            callBack={formCallBack}
             show={showForm} />
         <div className="users-list">
             {users.map((user, index) => (

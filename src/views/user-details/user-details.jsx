@@ -7,7 +7,7 @@ import './index.css'
 
 export const UserDetailsComponent = ({ user, loadUser }) => {
     useEffect(() => {
-        !Object.keys(user).length && loadUser()
+        !user.length && loadUser()
         // eslint-disable-next-line
     }, [loadUser])
 
