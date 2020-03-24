@@ -5,42 +5,27 @@ import { SearchInput } from '../../components/search-input'
 import { Button } from '../../components/button'
 import PropTypes from 'prop-types'
 
-export const MainComponent = ({ users, loadUsers, addUSer }) => {
+const getNextId = () => Math.floor(Math.random() * Math.floor(100))
+const setIdMapper = props => ({ id: getNextId(), ...props })
+
+export const MainComponent = ({ users, loadUsers, setSearchQuery, addUSer }) => {
     const [showForm, setShowForm] = useState(false)
-    const [filterRule, setFilterRule] = useState('')
-    const [disabled, setDisabled] = useState(false)
 
-    useEffect(() => {
-        !Object.keys(users).length && loadUsers()
-        // eslint-disable-next-line
-    }, [loadUsers])
-
-
-    const filteredUsers = users.filter(user => user.name.toLowerCase().includes(filterRule))
-
-    const handleClick = values => {
-        const userData = { id: Math.floor(Math.random() * Math.floor(100)), ...values } //random id
-        addUSer(userData)
-        setDisabled(false)
-        setShowForm(false)
-    }
-
-    const filterUser = e => {
-        let val = e.target.value.toLowerCase()
-        setFilterRule(val)
-    }
-
-    const showUserForm = () => {
-        setShowForm(true)
-        setDisabled(true)
-    }
+    // eslint-disable-next-line
+    useEffect(() => loadUsers(), [])
 
     return (<div className="main-wrapper">
-        <SearchInput callBack={filterUser} title='Search users' />
-        <Button onClick={showUserForm} text="Add user" disabled={disabled} />
-        <DefaultForm callBack={handleClick} show={showForm} />
+        <SearchInput
+            callBack={({ target: { value } }) => setSearchQuery(value)}
+            title='Search users' />
+        <Button
+            onClick={() => setShowForm(!showForm)}
+            text="Add user" />
+        <DefaultForm
+            callBack={values => addUSer(setIdMapper(values))}
+            show={showForm} />
         <div className="users-list">
-            {filteredUsers.map((user, index) => (
+            {users.map((user, index) => (
                 <UserCard user={user} key={index} />
             ))}
         </div>
