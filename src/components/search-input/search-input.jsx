@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from "prop-types"
 
-export const SearchInput = ({ callBack, title }) => {
+export const SearchInputComponent = ({ callBack, title, value }) => {
     return (
         <div className="form-group mt-2">
             <label>{title}</label>
-            <input type="search" className="form-control" placeholder="Search" onChange={callBack} />
+            <input value={value} type="search" className="form-control" placeholder="Search" onChange={callBack} />
         </div>
     )
 }
 
-SearchInput.propTypes = {
+SearchInputComponent.propTypes = {
     callBack: PropTypes.func,
-    title: PropTypes.string
+    title: PropTypes.string,
+    value: PropTypes.string
 }
