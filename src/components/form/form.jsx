@@ -1,5 +1,6 @@
-import React from 'react'
-import { Formik, Form, Field } from 'formik'
+import React, { useState } from 'react'
+import { Formik, Form } from 'formik'
+import { FormInput } from './form-input'
 import { Schema } from '../../utils/validation-rules'
 import { defaultConfig } from '../../utils/form-config'
 import PropTypes from 'prop-types'
@@ -7,6 +8,7 @@ import './index.css'
 
 export const DefaultForm = ({ callBack, userDetails, show = true }) => {
     const config = !userDetails ? defaultConfig : userDetails
+    const [users] = useState(config)
 
     if (!show) {
         return null
@@ -14,27 +16,17 @@ export const DefaultForm = ({ callBack, userDetails, show = true }) => {
 
     return (
         <Formik
-            initialValues={{ ...config }}
-            enableReinitialize
+            initialValues={{ ...users }}
+            enableReinitialize={true}
             validationSchema={Schema}
-            onSubmit={(values, { resetForm }) => {
+            onSubmit={(values) => {
                 callBack(values)
-                resetForm()
             }}>
             {({ errors, touched }) => (
                 <Form>
-                    <label className="mt-1 mb-0">Name</label>
-                    <Field name='name' type='text' className={`form-control ${errors.name && touched.name ? 'invalid' : ''}`} />
-                    {errors.name && touched.name ? (<div className="error-message">{errors.name}</div>) : null}
-
-                    <label className="mt-1 mb-0">Phone</label>
-                    <Field name='phone' type='text' className={`form-control ${errors.phone && touched.phone ? 'invalid' : ''}`} />
-                    {errors.phone && touched.phone ? (<div className="error-message">{errors.phone}</div>) : null}
-
-                    <label className="mt-1 mb-0">Email Address</label>
-                    <Field name='email' type='email' className={`form-control ${errors.email && touched.email ? 'invalid' : ''}`} />
-                    {errors.email && touched.email ? (<div className="error-message">{errors.email}</div>) : null}
-
+                    <FormInput name='name' title='Name' errors={errors} touched={touched} />
+                    <FormInput name='phone' title='Phone' errors={errors} touched={touched} />
+                    <FormInput name='email' type='email' title='Email Address' errors={errors} touched={touched} />
                     <button type="submit" className="btn btn-primary mt-2">Submit</button>
                 </Form>
             )}
