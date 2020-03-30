@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { DefaultForm } from '../../components/form'
 import { UserMainInfo } from '../../components/user-main-info'
 import { Avatar } from '../../components/avatart'
+import { BlockWithIcon } from '../../components/block-with-icon'
 import PropTypes from 'prop-types'
 import './index.css'
 
@@ -18,7 +19,12 @@ export const EditUserComponent = ({ user, loadUser, updateUser }) => {
     }
 
     return (<div>
-        <div className="user-info d-flex">
+        <div className="user-info d-flex position-relative">
+            <div className="arrow-back">
+                <Link to='/'>
+                    <BlockWithIcon icon='arrow-alt-circle-left' />
+                </Link>
+            </div>
             <Avatar img="/avatar.png">
                 <Link to={`/user/${user.id}`} className="link">View</Link>
             </Avatar>

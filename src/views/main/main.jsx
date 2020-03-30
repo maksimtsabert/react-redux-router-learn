@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { UserCard } from '../../components/user-card'
 import { DefaultForm } from '../../components/form'
 import { SearchInput } from '../../components/search-input'
