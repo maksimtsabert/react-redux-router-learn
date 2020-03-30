@@ -23,18 +23,17 @@ export const DefaultForm = ({ callBack, userDetails, show = true }) => {
             }}>
             {({ errors, touched }) => (
                 <Form>
-
                     <label className="mt-1 mb-0">Name</label>
-                    <Field name='name' type='text' className={`form-control ${errors['name'] && touched['name'] ? 'invalid' : ''}`} />
-                    {errors['name'] && touched['name'] ? (<div className="error-message">{errors['name']}</div>) : null}
+                    <Field name='name' type='text' className={`form-control ${errors.name && touched.name ? 'invalid' : ''}`} />
+                    {errors.name && touched.name ? (<div className="error-message">{errors.name}</div>) : null}
 
                     <label className="mt-1 mb-0">Phone</label>
-                    <Field name='phone' type='text' className={`form-control ${errors['phone'] && touched['phone'] ? 'invalid' : ''}`} />
-                    {errors['phone'] && touched['phone'] ? (<div className="error-message">{errors['phone']}</div>) : null}
+                    <Field name='phone' type='text' className={`form-control ${errors.phone && touched.phone ? 'invalid' : ''}`} />
+                    {errors.phone && touched.phone ? (<div className="error-message">{errors.phone}</div>) : null}
 
                     <label className="mt-1 mb-0">Email Address</label>
-                    <Field name='email' type='email' className={`form-control ${errors['email'] && touched['email'] ? 'invalid' : ''}`} />
-                    {errors['email'] && touched['email'] ? (<div className="error-message">{errors['email']}</div>) : null}
+                    <Field name='email' type='email' className={`form-control ${errors.email && touched.email ? 'invalid' : ''}`} />
+                    {errors.email && touched.email ? (<div className="error-message">{errors.email}</div>) : null}
 
                     <button type="submit" className="btn btn-primary mt-2">Submit</button>
                 </Form>

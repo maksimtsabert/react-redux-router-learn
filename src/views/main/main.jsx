@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { UserCard } from '../../components/user-card'
 import { DefaultForm } from '../../components/form'
 import { SearchInput } from '../../components/search-input'
@@ -10,6 +10,7 @@ const setIdMapper = values => ({ id: getNextId(), ...values })
 
 export const MainComponent = ({ users, loadUsers, setSearchQuery, addUSer }) => {
     const [showForm, setShowForm] = useState(false)
+    // const isCancelled = useRef(false);
 
     useEffect(() => {
         !users.length && loadUsers()
